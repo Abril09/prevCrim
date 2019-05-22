@@ -19,10 +19,10 @@ public class loginController {
 
     {   try {
             usuariosBD us=new usuariosBD();
-            Map datos=us.getUsuarios(usuario.getUser(),usuario.getPass(),"Activo");
+            Map datos=us.getUsuarios(usuario.getUser(),usuario.getPass());
             if(!datos.containsKey("false")){
 
-                Map menu=new menuRol().getMenu(usuario.getUser(),usuario.getPass(),"Activo");
+                Map menu=new menuRol().getMenu(usuario.getUser(),usuario.getPass());
                 result.put("data",datos);
                 result.put("menu",menu);
                 result.put("res","ok");

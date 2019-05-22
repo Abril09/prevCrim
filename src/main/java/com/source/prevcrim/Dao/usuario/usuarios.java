@@ -6,10 +6,30 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class usuarios {
     private String nombre;
     private String apellido;
+    private String institucion;
+    private  String perfil;
     private String rut;
     private String pass;
     private String rol;
     private String user;
+
+
+
+    public String getInstitucion() {
+        return institucion;
+    }
+
+    public void setInstitucion(String institucion) {
+        this.institucion = institucion;
+    }
+
+    public String getPerfil() {
+        return perfil;
+    }
+
+    public void setPerfil(String perfil) {
+        this.perfil = perfil;
+    }
 
     public String getUser() {
         return user;

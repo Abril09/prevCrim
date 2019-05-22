@@ -12,18 +12,17 @@ public class menuRol {
     private List itemsMenu=new ArrayList<>();
     private List nivelUno=new ArrayList();
     private List nivelDos=new ArrayList();
-    public Map getMenu(String user,String pass,String estado){
-
+    public Map getMenu(String user,String pass){
 
         try{
-            itemsMenu= conexionBD.conexionTemplate().queryForList("call getUser('"+user+"','"+pass+"','"+estado+"')");
+            itemsMenu= conexionBD.conexionTemplate().queryForList("call getMenuRol('"+user+"','"+pass+"')");
             for (Object item:itemsMenu)
                  {
                      Map objeto=(Map)item;
                      String nivelActual=(String)objeto.get("nivel");
                         this.switchMenu(nivelActual,objeto);
 
-            }
+                 }
 
 
 

@@ -1,30 +1,47 @@
 package com.source.prevcrim.controller.user;
 
+import com.source.prevcrim.Dao.usuario.usuarios;
 import com.source.prevcrim.modelo.usuarios.usuariosBD;
 
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/usuarios")
 public class userController {
+    private Map result=new LinkedHashMap();
 
 
+    @GetMapping("/list")
+    private Map getAllOperadores () {
+        result.clear();
+        try {
+            result.put("res",new usuariosBD().getAllOperadores());
 
-    @GetMapping("/all")
-    private Map pro () {
 
-        Boolean res=new usuariosBD().usuario();
-        return new usuariosBD().getUsuarios("admin","1233","Activo");
+        }catch(Exception e){
+            result.put("res","ko");
+            System.out.println(e.getMessage());
+
+        }
+        return result;
     }
+    @PostMapping()
+    @ResponseBody
+    private Map insertPerfilUsr(@RequestBody usuarios usr){
+        try{
+            result=new usuariosBD().insertUsuario(usr);
+        }
+        catch (Exception e){
+            System.out.println(e.getMessage());
 
-    @PostMapping("/post")
-    private Map res(@PathVariable  String id){
-        Map s=new HashMap();
-            s.put("dev",id);
-        return s;
+        }
+
+
+        return result;
     }
 
 }
